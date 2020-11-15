@@ -60,7 +60,7 @@ public class Ciclistas implements Runnable {
             e.printStackTrace();
         }
         try {
-            cyclicBarrier.await();
+            cyclicBarrierStageThree.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
             return;
@@ -70,14 +70,6 @@ public class Ciclistas implements Runnable {
         try {
             comeBackHome();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            cyclicBarrierStageThree.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return;
-        } catch (BrokenBarrierException e) {
             e.printStackTrace();
         }
         try {
