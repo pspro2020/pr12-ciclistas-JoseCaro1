@@ -11,16 +11,12 @@ public class Ciclistas implements Runnable {
 
 
     private final CyclicBarrier cyclicBarrier;
-    private final CyclicBarrier cyclicBarrierStageTwo;
-    private final CyclicBarrier cyclicBarrierStageThree;
     private final Random random = new Random();
     private final DateTimeFormatter dateTimeFormatter =
             DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public Ciclistas(CyclicBarrier cyclicBarrier, CyclicBarrier cyclicBarrierStageTwo, CyclicBarrier cyclicBarrierStageThree) {
         this.cyclicBarrier = cyclicBarrier;
-        this.cyclicBarrierStageTwo = cyclicBarrierStageTwo;
-        this.cyclicBarrierStageThree = cyclicBarrierStageThree;
     }
 
 
@@ -46,7 +42,7 @@ public class Ciclistas implements Runnable {
             e.printStackTrace();
         }
         try {
-            cyclicBarrierStageTwo.await();
+            cyclicBarrier.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
             return;
@@ -60,7 +56,7 @@ public class Ciclistas implements Runnable {
             e.printStackTrace();
         }
         try {
-            cyclicBarrierStageThree.await();
+            cyclicBarrier.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
             return;
